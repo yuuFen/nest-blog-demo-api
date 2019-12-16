@@ -1,8 +1,18 @@
 import { NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+
+  const options = new DocumentBuilder()
+    .setTitle('nest-yuufen-demo-api')
+    .setDescription('使用 nestjs 的个人网站接口测试版')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api-docs', app, document);
+
+  await app.listen(5000);
 }
 bootstrap();

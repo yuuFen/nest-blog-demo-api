@@ -3,6 +3,7 @@ import { ApiTags, ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator'
 import { InjectModel } from 'nestjs-typegoose';
 import { Post as PostSchema} from './posts.model'
+import { ModelType } from '@typegoose/typegoose/lib/types';
 
 class CreatePostDto {
   @ApiProperty({ description: '文章标题',example: '文章标题示例' })
@@ -17,7 +18,7 @@ class CreatePostDto {
 export class PostsController {
 
   constructor(
-    @InjectModel(PostSchema) private readonly postModel
+    @InjectModel(PostSchema) private readonly postModel: ModelType<PostSchema>
   ) {}
 
   @Get()

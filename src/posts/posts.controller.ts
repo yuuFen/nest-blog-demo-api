@@ -4,9 +4,9 @@ import { ApiTags, ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { PostModel } from './posts.model';
 
 class CreatePostDto {
-  @ApiProperty({ description: '文章标题' })
+  @ApiProperty({ description: '文章标题',example: '文章标题示例' })
   title: string
-  @ApiProperty({ description: '文章内容' })
+  @ApiProperty({ description: '文章内容', example: '文章内容示例' })
   content: string
 }
 
@@ -16,14 +16,14 @@ export class PostsController {
 
   @Get()
   @ApiOperation({ summary: '文章列表'})
-  index() {
-    return []
+  async index() {
+    return await PostModel.find()
   }
 
   @Post()
   @ApiOperation({ summary: '创建文章' })
-  create(@Body() body: CreatePostDto) {
-
+  async create(@Body() createpostdto: CreatePostDto) {
+    await PostModel.create(createpostdto)
     return {
       success: true
     }
@@ -31,15 +31,14 @@ export class PostsController {
 
   @Get(':id')
   @ApiOperation({ summary: '文章详情' })
-  detail(@Param('id') id: string) {
-    return {
-      id: id,
-    }
+  async detail(@Param('id') id: string) {
+    return await PostModel.findById(id)
   }
 
   @Put(':id')
   @ApiOperation({ summary: '编辑文章' })
-  update(@Param('id') id: string, @Body() body: CreatePostDto) {
+  async update(@Param('id') id: string, @Body() updatepostdto: CreatePostDto) {
+    await PostModel.findByIdAndUpdate(id, updatepostdto)
     return {
       success: true
     }
@@ -47,7 +46,8 @@ export class PostsController {
 
   @Delete(':id')
   @ApiOperation({ summary: '删除文章' })
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
+    await PostModel.findByIdAndDelete(id)
     return {
       success: true
     }

@@ -3128,6 +3128,11 @@ is-ci@^2.0.0:
   dependencies:
     ci-info "^2.0.0"
 
+is-class@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npm.taobao.org/is-class/download/is-class-0.0.7.tgz#8eca1823d47489cd543cb0c848f3b84bf80c7171"
+  integrity sha1-jsoYI9R0ic1UPLDISPO4S/gMcXE=
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npm.taobao.org/is-data-descriptor/download/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -4362,6 +4367,14 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.npm.taobao.org/neo-async/download/neo-async-2.6.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fneo-async%2Fdownload%2Fneo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha1-rCetpmFn+ohJpq3dg39rGJrSCBw=
+
+nestjs-typegoose@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npm.taobao.org/nestjs-typegoose/download/nestjs-typegoose-7.0.0.tgz#aa638c06bd4b35c3ac1db9384d1e3ba354665d67"
+  integrity sha1-qmOMBr1LNcOsHbk4TR47o1RmXWc=
+  dependencies:
+    is-class "^0.0.7"
+    reflect-metadata "^0.1.13"
 
 next-tick@1, next-tick@~1.0.0:
   version "1.0.0"
